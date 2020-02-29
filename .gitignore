@@ -39,3 +39,5 @@ target
 
 # Test resource
 !asset-zip-example.zip
+/.apt_generated/
+/.apt_generated_tests/

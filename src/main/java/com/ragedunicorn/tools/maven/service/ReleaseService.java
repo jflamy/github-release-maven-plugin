@@ -133,8 +133,12 @@ public class ReleaseService {
       GitHubApiClientError clientError = gson.fromJson(responseString, GitHubApiClientError.class);
       List<GitHubApiError> errors = clientError.getErrors();
 
-      for (GitHubApiError error : errors) {
-        logger.error(error.toString());
+      if (errors != null) {
+          for (GitHubApiError error : errors) {
+              logger.error(error.toString());
+          }
+      } else {
+          logger.error(clientError.getMessage());
       }
 
       throw new MojoExecutionException("Failed to create release - reason: "
